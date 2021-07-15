@@ -1,0 +1,59 @@
+.messageCard {
+	margin: 0.4rem 0;
+	width: fit-content;
+	text-align: left;
+}
+.cardContent {
+	padding: 0;
+	margin: 0;
+	background-color: #f6f6f6;
+}
+.typography {
+	padding: 0;
+	margin: 0;
+}
+.infoContainer {
+	text-align: left;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.user,
+.timestamp {
+	font-weight: 500;
+}
+.user {
+	color: #3f51b5;
+	font-size: 0.9rem;
+	padding-right: 0.4rem;
+}
+.timestamp {
+	font-size: 0.6rem;
+	color: #989898;
+	font-weight: 300;
+}
+.text {
+	text-align: left;
+}
+
+/* styling current user messages */
+
+.isUser,
+.isUser .infoContainer,
+.isUser .text,
+.isUser > div {
+	margin-left: auto;
+	text-align: right;
+}
+.isUser .user {
+	padding-left: 0.4rem;
+}
+.isUser .infoContainer {
+	flex-direction: row-reverse;
+}
+.isUser .cardContent {
+	background-color: #3f51b5;
+}
+.isUser .text {
+	color: white;
+}
