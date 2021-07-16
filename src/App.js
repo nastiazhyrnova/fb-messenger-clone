@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import firebase from 'firebase';
+
 import FlipMove from 'react-flip-move';
 import Message from './Message/Message';
 import { IconButton } from '@material-ui/core';
@@ -10,6 +11,7 @@ import styles from './App.module.css';
 
 const App = _ => {
 	const inputRef = useRef();
+	const messagesEndRef = useRef(null);
 	const [messages, setMessages] = useState([]);
 	const [error, setError] = useState(null);
 	const [username, setUsername] = useState('');
@@ -18,6 +20,10 @@ const App = _ => {
 	// 	timeStyle: 'medium',
 	// 	dateStyle: 'short',
 	// });
+
+	const scrollToBottom = _ => {
+		messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+	};
 
 	useEffect(
 		_ => {
@@ -39,6 +45,8 @@ const App = _ => {
 		const name = prompt('Please enter your username');
 		setUsername(name);
 	}, []);
+
+	useEffect(scrollToBottom, [messages]);
 
 	const sendMessage = e => {
 		e.preventDefault();
@@ -76,7 +84,12 @@ const App = _ => {
 				</header>
 
 				<div className={styles.messagesContainer}>
-					<FlipMove>{output}</FlipMove>
+					<FlipMove>
+						<>
+							{output}
+							<div ref={messagesEndRef} />
+						</>
+					</FlipMove>
 				</div>
 				<form>
 					<div className={styles.inputWrapper}>
