@@ -1,8 +1,6 @@
 import { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { Card, CardContent, Typography } from '@material-ui/core';
-
 import styles from './Message.module.css';
 
 const Message = forwardRef((props, ref) => {
@@ -11,14 +9,16 @@ const Message = forwardRef((props, ref) => {
 	// 	dateStyle: 'short',
 	// });
 
+	const isUser = props.currentUser === props.user;
+
 	const containerStyles = [styles.messageContainer];
-	if (props.currentUser === props.user) {
+	if (isUser) {
 		containerStyles.push(styles.isUser);
 	}
 	return (
 		<div className={containerStyles.join(' ')} ref={ref}>
 			<div className={styles.infoContainer}>
-				<span className={styles.user}>{props.user}</span>
+				<span className={styles.user}>{!isUser && props.user}</span>
 				{/* <span className={styles.timestamp}>{props.timestamp}</span> */}
 			</div>
 

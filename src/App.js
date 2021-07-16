@@ -69,29 +69,33 @@ const App = _ => {
 	});
 
 	return (
-		<div className={styles.mainContainer}>
-			<h1>Facebook Messenger</h1>
+		<>
+			<div className={styles.mainContainer}>
+				<header>
+					<h1>Facebook Messenger</h1>
+				</header>
 
-			<div className={styles.messagesContainer}>
-				<FlipMove>{output}</FlipMove>
-			</div>
-			<form>
-				<div className={styles.inputWrapper}>
-					<input type='text' ref={inputRef} className={styles.input} />
-					<button
-						variant='contained'
-						color='primary'
-						type='submit'
-						className={styles.button}
-						onClick={sendMessage}>
-						<IconButton className={styles.iconButton}>
-							<SendIcon className={styles.icon} />
-						</IconButton>
-					</button>
+				<div className={styles.messagesContainer}>
+					<FlipMove>{output}</FlipMove>
 				</div>
-			</form>
-			{error && <p className={styles.error}>{error}</p>}
-		</div>
+				<form>
+					<div className={styles.inputWrapper}>
+						<input type='text' ref={inputRef} className={styles.input} />
+						<button
+							variant='contained'
+							color='primary'
+							type='submit'
+							className={styles.button}
+							onClick={sendMessage}>
+							<IconButton className={styles.iconButton}>
+								<SendIcon fontSize='small' className={styles.icon} />
+							</IconButton>
+						</button>
+					</div>
+				</form>
+				{error && <p className={styles.error}>{error}</p>}
+			</div>
+		</>
 	);
 };
 
