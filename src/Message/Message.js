@@ -1,38 +1,33 @@
+import { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { Card, CardContent, Typography } from '@material-ui/core';
 
 import styles from './Message.module.css';
 
-const Message = props => {
+const Message = forwardRef((props, ref) => {
 	// const timeFormat = new Intl.DateTimeFormat('es', {
 	// 	timeStyle: 'medium',
 	// 	dateStyle: 'short',
 	// });
 
-	const containerStyles = [styles.messageCard];
+	const containerStyles = [styles.messageContainer];
 	if (props.currentUser === props.user) {
 		containerStyles.push(styles.isUser);
 	}
 	return (
-		<>
-			<div className={containerStyles.join(' ')}>
-				<div className={styles.infoContainer}>
-					<span className={styles.user}>{props.user}</span>
-					{/* <span className={styles.timestamp}>{props.timestamp}</span> */}
-				</div>
-
-				<Card className={styles.messageCard}>
-					<CardContent className={styles.cardContent}>
-						<Typography className={styles.typography}>
-							<span className={styles.text}>{props.children}</span>
-						</Typography>
-					</CardContent>
-				</Card>
+		<div className={containerStyles.join(' ')} ref={ref}>
+			<div className={styles.infoContainer}>
+				<span className={styles.user}>{props.user}</span>
+				{/* <span className={styles.timestamp}>{props.timestamp}</span> */}
 			</div>
-		</>
+
+			<div className={styles.messageCard}>
+				<span className={styles.text}>{props.children}</span>
+			</div>
+		</div>
 	);
-};
+});
 
 Message.propTypes = {
 	user: PropTypes.string,

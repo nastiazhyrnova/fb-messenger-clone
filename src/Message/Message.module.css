@@ -1,16 +1,4 @@
-.messageCard {
-	margin: 0.4rem 0;
-	width: fit-content;
-	text-align: left;
-}
-.cardContent {
-	padding: 0;
-	margin: 0;
-	background-color: #f6f6f6;
-}
-.typography {
-	padding: 0;
-	margin: 0;
+.messageContainer {
 }
 .infoContainer {
 	text-align: left;
@@ -32,6 +20,14 @@
 	color: #989898;
 	font-weight: 300;
 }
+.messageCard {
+	margin: 0.4rem 0;
+	width: fit-content;
+	text-align: left;
+	background-color: #e3e6ea;
+	padding: 10px 15px;
+	border-radius: 25px;
+}
 .text {
 	text-align: left;
 }
@@ -51,8 +47,8 @@
 .isUser .infoContainer {
 	flex-direction: row-reverse;
 }
-.isUser .cardContent {
-	background-color: #3f51b5;
+.isUser .messageCard {
+	background-color: #0484ff;
 }
 .isUser .text {
 	color: white;
